@@ -10,7 +10,6 @@
   },
   "rules": {
     "arrow-spacing": ["warn", { "before": true, "after": true }],
-    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
     "curly": ["error", "multi-line", "consistent"],
     "dot-location": ["error", "property"],
     "handle-callback-err": "off",
@@ -30,6 +29,7 @@
     "no-shadow": ["error", { "allow": ["err", "resolve", "reject"] }],
     "no-trailing-spaces": ["error"],
     "no-var": "error",
+    "no-unused-vars": "off",
     "object-curly-spacing": ["error", "always"],
     "prefer-const": "error",
     "semi": ["error", "always"],
