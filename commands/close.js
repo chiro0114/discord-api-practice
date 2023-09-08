@@ -15,7 +15,7 @@ export default {
             : e.author.username,
         }));
         channel.setName(`【解決済】${channel.name}`).then(() => {
-          channel.setLocked(true);
+          channel.setArchived(true);
         });
       });
     });
