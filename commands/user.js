@@ -5,7 +5,7 @@ export default {
     .setName("user")
     .setDescription("info about the user"),
   async execute(interaction) {
-    await interaction.replay(
+    await interaction.reply(
       `this comman was run by ${interaction.user.username}, who joined on ${interaction.member.joinedAt}`
     );
   },

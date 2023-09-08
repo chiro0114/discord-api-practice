@@ -8,7 +8,7 @@ config();
 
 const token = process.env.TOKEN;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+export const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 
@@ -27,14 +27,18 @@ for (const file of commandFiles) {
       client.commands.set(result.data.name, result);
     } else {
       console.log(
-        `[WARNING] the commnad at ${filePath} is missing a required "data" or "execute property`
+        `[WARNING] the command at ${filePath} is missing a required "data" or "execute property`
       );
     }
   });
 }
 
-client.on(Events.InteractinCreate, async (interaction) => {
-  if (!interaction.isChatInputCommnad()) return;
+client.once(Events.ClientReady, (c) => {
+  console.log(`Ready! Logged in as ${c.user.tag}`);
+});
+
+client.on(Events.InteractionCreate, async (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
   const command = interaction.client.commands.get(interaction.commandName);
 
   if (!command) {
@@ -56,11 +60,6 @@ client.on(Events.InteractinCreate, async (interaction) => {
       });
     }
   }
-  console.log(interaction);
-});
-
-client.once(Events.ClientReady, (c) => {
-  console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
 client.login(token);
